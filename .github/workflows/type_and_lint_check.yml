@@ -3,7 +3,6 @@ name: Lint and Type Check
 on:
   pull_request:
     types: [opened, reopened, synchronize, edited]
-    branches: [main, dev]
 
 jobs:
   lint-and-type-check:
