@@ -1,0 +1,37 @@
+name: Lint and Type Check
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, edited]
+    branches: [main, dev]
+
+jobs:
+  lint-and-type-check:
+    name: "Lint and Type Check (Lint with ESLint, Type Check with TypeScript)"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "18"
+          registry-url: "https://registry.npmjs.org/"
+          cache: "pnpm"
+
+      - name: Install Dependencies
+        run: pnpm install
+
+      - name: Lint with ESLint
+        run: pnpm run lint
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifacts
+          path: ./dist
