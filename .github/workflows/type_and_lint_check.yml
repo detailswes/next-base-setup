@@ -8,7 +8,6 @@ on:
 
 jobs:
   lint-and-type-check:
-    name: "Lint and Type Check (Lint with ESLint, Type Check with TypeScript)"
     runs-on: ubuntu-latest
 
     steps:
