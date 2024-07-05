@@ -35,9 +35,3 @@ jobs:
 
       - name: Lint with ESLint
         run: pnpm run lint
-
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: build-artifacts
-          path: ./dist
