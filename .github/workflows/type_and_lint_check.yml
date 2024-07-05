@@ -15,15 +15,20 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v3
-
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
           node-version: "18"
           registry-url: "https://registry.npmjs.org/"
           cache: "pnpm"
+
+      - name: Install pnpm
+        run: |
+          npm install -g pnpm  # This ensures the latest version of pnpm is installed
+          pnpm install
+
+      - name: Check pnpm Version
+        run: pnpm --version  # Verify the installed pnpm version
 
       - name: Install Dependencies
         run: pnpm install
