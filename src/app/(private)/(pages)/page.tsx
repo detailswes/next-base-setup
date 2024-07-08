@@ -2,6 +2,7 @@
 import { Button } from "@mui/material";
 import cookie from "js-cookie";
 import { useRouter } from "next/navigation";
+import { toggleTheme } from "@/theme";
 
 const Dashboard = () => {
   const router = useRouter();
@@ -9,11 +10,12 @@ const Dashboard = () => {
   const handleLogout = () => {
     cookie.remove("token");
     router.push("/signin");
+    toggleTheme('dark');
   };
 
   return (
     <div>
-      <Button color="primary" variant="contained" onClick={handleLogout}>
+      <Button color="danger" variant="contained" onClick={handleLogout}>
         logout
       </Button>
     </div>

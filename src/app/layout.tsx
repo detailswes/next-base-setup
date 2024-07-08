@@ -8,6 +8,7 @@ import "./globals.css";
 import { ThemeProvider } from "@mui/material/styles";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import { lightTheme, darkTheme } from "../theme";
+import { cookies } from "next/headers";
 
 // Use a font from Google
 const inter = Inter({ subsets: ["latin"] });
@@ -23,10 +24,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Determine the theme based on a server-side condition (e.g., a cookie, header, or other server-side value)
-  const isDarkMode = true; // Replace with the actual server-side logic
-
-  // Set the chosen theme
+  const cookieStore = cookies();
+  const theme = cookieStore.get("theme")?.value;
+  const isDarkMode = theme ?? false;
 
   return (
     <html lang="en">
