@@ -10,12 +10,12 @@ const Dashboard = () => {
   const handleLogout = () => {
     cookie.remove("token");
     router.push("/signin");
-    toggleTheme('dark');
+    toggleTheme("dark");
   };
 
   return (
     <div>
-      <Button color="danger" variant="contained" onClick={handleLogout}>
+      <Button color="primary" variant="contained" onClick={handleLogout}>
         logout
       </Button>
     </div>
