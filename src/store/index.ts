@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import authSlice, { getAccountDetails } from "@/features/auth";
+import toastSlice from "@/features/toast";
 
 export const store = configureStore({
   reducer: {
     auth: authSlice,
+    toast: toastSlice,
     [getAccountDetails.reducerPath]: getAccountDetails.reducer,
   },
 
@@ -22,7 +24,3 @@ setupListeners(store.dispatch);
 export type RootState = ReturnType<typeof store.getState>;
 
 export type AppDispatch = typeof store.dispatch;
-
-
-
-

@@ -9,7 +9,8 @@ import { ThemeProvider } from "@mui/material/styles";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import { lightTheme, darkTheme } from "../theme";
 import { cookies } from "next/headers";
-import ReduxProvider from "@/store/storeProvider";
+import ReduxProvider from "@/store/store-provider";
+import ToastProvider from "@/components/ToastProvider";
 
 // Use a font from Google
 const inter = Inter({ subsets: ["latin"] });
@@ -35,7 +36,7 @@ export default function RootLayout({
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
           <ReduxProvider>
             <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
-              {children}
+              <ToastProvider>{children}</ToastProvider>
             </ThemeProvider>
           </ReduxProvider>
         </AppRouterCacheProvider>

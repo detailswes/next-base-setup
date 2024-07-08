@@ -3,6 +3,7 @@ import { getSession } from "@/utils/token";
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { axiosBaseQuery } from "@/utils/axiosInstance";
 import { AppDispatch } from "@/store";
+import onQueryStartedErrorToast from "@/store/error-logger";
 
 type Payload = {
   isLogedIn: boolean;
@@ -19,6 +20,7 @@ export const authSlice = createSlice({
   initialState: authSliceInitalVal,
   reducers: {
     setAuth: (state, actions) => {
+      console.log(actions, "lol");
       const { isLogedIn, token } = actions.payload;
       state.isLogedIn = isLogedIn;
       state.token = token;
@@ -35,13 +37,10 @@ export const getAccountDetails = createApi({
   endpoints: (builder) => ({
     getAccount: builder.query({
       query: () => ({
-        url: `/accounts`,
+        url: `https://jsonplaceholder.typicode.com/todos/10.22`,
         method: "GET",
-
-        // headers: {
-        //   Authorization: `Bearer ${getUserSession().token}`,
-        // },
       }),
+      onQueryStarted: onQueryStartedErrorToast,
       providesTags: ["account"],
     }),
   }),
@@ -51,7 +50,7 @@ export const getAccountDetails = createApi({
 
 export const invalidateTagsAfterLogin = (dispatch: AppDispatch) => {
   dispatch(getAccountDetails.util.invalidateTags(["account"]));
-  
+
   // add more tags if you have more rtk query
 };
 
