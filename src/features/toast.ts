@@ -7,7 +7,7 @@ type Payload = {
 
 const toastSliceInitalVal: Payload = {
   message: "",
-  type: "error" || "success",
+  type: "",
 };
 
 export const toastSlice = createSlice({

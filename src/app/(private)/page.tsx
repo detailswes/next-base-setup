@@ -7,9 +7,9 @@ import { useGetAccountQuery } from "@/features/auth";
 
 const Dashboard = () => {
   const router = useRouter();
-  const { data } = useGetAccountQuery("");
+  const { data } = useGetAccountQuery();
 
-  console.log(data,"data");
+  console.log(data, "data");
 
   const handleLogout = () => {
     cookie.remove("token");

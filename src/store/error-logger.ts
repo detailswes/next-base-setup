@@ -13,7 +13,7 @@ const onQueryStartedErrorToast = async (
   try {
     await queryFulfilled;
   } catch (error) {
-    dispatch(setToast({ message: error, type: "error" }));
+    dispatch(setToast({ message: "got the error", type: "error" }));
   }
 };
 

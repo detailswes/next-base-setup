@@ -26,7 +26,7 @@ interface CustomPaletteColor {
 
 const { palette } = createTheme();
 
-const createCustomPalette = () => ({
+const createCustomPaletteLight = () => ({
   Typography: palette.augmentColor({ color: customColors.Typography }),
   TypographySecondry: palette.augmentColor({
     color: customColors.TypographySecondry,
@@ -38,8 +38,10 @@ const createCustomPalette = () => ({
 const createCustomTheme = (mode: "light" | "dark") =>
   createTheme({
     palette: {
-      ...createCustomPalette(),
-      ...colors,
+      ...(mode === "light"
+        ? createCustomPaletteLight()
+        : createCustomPaletteLight()), //current theme is same for both mode
+      ...(mode === "light" ? colors : colors),
       mode: mode,
     },
 

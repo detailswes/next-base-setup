@@ -24,7 +24,7 @@ export const colors = {
     dark: "#DC6107",
     light: "#FFEEE1",
   },
-  danger: {
+  error: {
     main: "#ED3433",
     dark: "#D91615",
     light: "#FFE9E9",
@@ -40,7 +40,7 @@ export const customColors = {
   TypographySecondry: {
     main: "#808080",
     dark: "#D4D4D4",
-    light: "##FFFFFF",
+    light: "#FFFFFF",
   },
   Border: {
     main: "#DDDEE1",
