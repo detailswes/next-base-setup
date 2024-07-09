@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { RootState } from "@/store";
 import Snackbar from "@mui/material/Snackbar";
 import { Box } from "@mui/material";
@@ -10,10 +10,14 @@ import { setToast } from "@/features/toast";
 
 const ToastProvider = ({ children }: { children: React.ReactNode }) => {
   const dispatch = useDispatch();
-  const { toast } = useSelector((state: RootState) => state);
-  const theme = useTheme();
+  const { toast } = useSelector(
+    (state: RootState) => ({
+      toast: state.toast,
+    }),
+    shallowEqual
+  );
 
-  console.log(toast, "toast ");
+  const theme = useTheme();
 
   const handleClose = () => {
     dispatch(setToast({ message: "", type: "" }));
