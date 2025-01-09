@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-export function middleware(request: NextRequest) {
-  const authToken = request.cookies.get("token")?.value;
+export async function middleware (request: NextRequest) {
+  const authToken = await request.cookies.get("token")?.value;
   const publicRoutes = ["/signin", "/signup"];
   const isPublicRoute = publicRoutes.includes(request.nextUrl.pathname);
   if (isPublicRoute && authToken) {

@@ -21,12 +21,13 @@ export const metadata: Metadata = {
 };
 
 // Define the layout component
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cookieStore = cookies();
+  // Await the cookies function
+  const cookieStore = await cookies();
   const theme = cookieStore.get("theme")?.value;
   const isDarkMode = theme ?? false;
 
