@@ -2,18 +2,61 @@
   "extends": [
     "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
     "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint",
+    "import",
+    "react-hooks"
   ],
   "rules": {
     "react/display-name": "error",
     "@next/next/no-img-element": "error",
     "react/no-unescaped-entities": "error",
     "import/no-anonymous-default-export": "error",
-    "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/no-non-null-assertion": "off",
-    // add new line above comment
+
+    "import/no-named-as-default": "off",
+
+    // Limit code complexity (max 10 unique execution paths mean nested code blocks conditions)
+    "complexity": ["error", 10],
+    // Limit function size to maintain readability
+
+    // Prevent deeply nested code blocks (max 4 levels)
+    "max-depth": ["error", 4],
+
+    // Limit function size to maintain readability
+    "max-lines-per-function": ["error", 50],
+
+
+    // Prevent duplicate import statements
+    "no-duplicate-imports": "error",
+
+    // Warn against unused expressions
+    "no-unused-expressions": "error",
+
+
+    // Encourage using const over let when possible
+    "prefer-const": "error",
+
+
+    // Enforce React Hooks rules
+    "react-hooks/rules-of-hooks": "error",
+
+    // Warn about missing dependencies in hooks
+    "react-hooks/exhaustive-deps": "error",
+
+    "@typescript-eslint/no-unused-vars":  "error", 
+    
+    //need to enable this  "@typescript-eslint/no-inline-types": "error",  
+
     "lines-around-comment": [
       "error",
       {
@@ -25,26 +68,20 @@
         "allowArrayStart": true
       }
     ],
-    // add new line above return
     "newline-before-return": "error",
-    // add new line below import
     "import/newline-after-import": [
       "error",
       {
         "count": 1
       }
     ],
-    "@typescript-eslint/ban-types": [
-      "error",
-      {
-        "extendDefaults": true,
-        "types": {
-          "{}": false
-        }
+    "no-console": [
+      "error", 
+      { 
+        "allow": ["warn", "error"] 
       }
     ]
   },
-  "plugins": ["import"],
   "settings": {
     "import/parsers": {
       "@typescript-eslint/parser": [".ts", ".tsx"]

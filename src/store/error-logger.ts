@@ -12,8 +12,8 @@ const onQueryStartedErrorToast = async (
 ) => {
   try {
     await queryFulfilled;
-  } catch (error) {
-    dispatch(setToast({ message: "global Error handling is working", type: "error" }));
+  } catch (error:any) {
+    dispatch(setToast({ message: error?.response , type: "error" }));
   }
 };
 

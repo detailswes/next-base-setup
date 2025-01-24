@@ -5,11 +5,11 @@ import { useRouter } from "next/navigation";
 import { toggleTheme } from "@/theme";
 import { useGetAccountQuery } from "@/features/auth";
 
-const Dashboard = () => {
+const Dashboard = ( ) => {
   const router = useRouter();
   const { data } = useGetAccountQuery();
 
-  console.log(data, "data");
+
 
   const handleLogout = () => {
     cookie.remove("token");
@@ -19,11 +19,17 @@ const Dashboard = () => {
 
   return (
     <div>
+      {JSON.stringify(data)}
       <Button color="primary" variant="contained" onClick={handleLogout}>
         logout
       </Button>
+      <CompA lol="dsdsd" />
     </div>
   );
 };
+
+const CompA = ({lol}:{lol:string})=>{
+  return <div>CompA{lol}</div>
+}
 
 export default Dashboard;

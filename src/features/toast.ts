@@ -15,7 +15,6 @@ export const toastSlice = createSlice({
   initialState: toastSliceInitalVal,
   reducers: {
     setToast: (state, actions) => {
-      console.log(actions.payload, "state");
       const { message, type } = actions.payload;
       state.message = message;
       state.type = type;
