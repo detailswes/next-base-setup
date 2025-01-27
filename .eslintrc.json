@@ -54,8 +54,7 @@
     "react-hooks/exhaustive-deps": "error",
 
     "@typescript-eslint/no-unused-vars":  "error", 
-    
-    //need to enable this  "@typescript-eslint/no-inline-types": "error",  
+
 
     "lines-around-comment": [
       "error",
