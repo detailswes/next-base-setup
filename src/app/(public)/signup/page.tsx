@@ -1,12 +1,8 @@
-"use client"
-import React from 'react'
+"use client";
+import React from "react";
 
 const Signup = () => {
-  return (
+  return <div>Signup</div>;
+};
 
-    
-    <div>Signup</div>
-  )
-}
-
-export default Signup
+export default Signup;
