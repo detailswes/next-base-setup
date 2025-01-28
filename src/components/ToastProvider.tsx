@@ -26,10 +26,10 @@ const ToastProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <Snackbar
-        open={toast.message ? true : false}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
         autoHideDuration={4000}
         onClose={handleClose}
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        open={toast.message ? true : false}
       >
         <Box
           sx={{

@@ -1,14 +1,17 @@
 import "@/app/globals.css";
+import { ReactNode } from "react";
 
-export default function RootLayout({
+const RootLayout = ({
   children,
 }: Readonly<{
-  children: React.ReactNode;
-}>) {
+  children: ReactNode;
+}>) => {
   return (
     <>
       public page layout here
       {children}
     </>
   );
-}
+};
+
+export default RootLayout;

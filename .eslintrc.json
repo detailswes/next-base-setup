@@ -6,14 +6,12 @@
     "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:import/typescript",
-    "prettier"
+    "prettier",
+    "eslint:recommended",
+    "plugin:react/recommended"
   ],
   "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "@typescript-eslint",
-    "import",
-    "react-hooks"
-  ],
+  "plugins": ["@typescript-eslint", "import", "react-hooks", "react"],
   "rules": {
     "react/display-name": "error",
     "@next/next/no-img-element": "error",
@@ -35,17 +33,14 @@
     // Limit function size to maintain readability
     "max-lines-per-function": ["error", 50],
 
-
     // Prevent duplicate import statements
     "no-duplicate-imports": "error",
 
     // Warn against unused expressions
     "no-unused-expressions": "error",
 
-
     // Encourage using const over let when possible
     "prefer-const": "error",
-
 
     // Enforce React Hooks rules
     "react-hooks/rules-of-hooks": "error",
@@ -53,8 +48,107 @@
     // Warn about missing dependencies in hooks
     "react-hooks/exhaustive-deps": "error",
 
-    "@typescript-eslint/no-unused-vars":  "error", 
+    "@typescript-eslint/no-unused-vars": "error",
 
+    //allow only functional components
+    "react/prefer-stateless-function": "error",
+
+    //This is important for accessibility and ensures that buttons behave correctly
+    "react/button-has-type": "error",
+
+    //Flags props defined in a component that are never used within the component itself. This helps clean up unused code and avoids unnecessary prop definitions.
+    "react/no-unused-prop-types": "error",
+
+    //Requires that component names in JSX follow PascalCase
+    "react/jsx-pascal-case": "error",
+
+    //Prevents the use of javascript:void(0) or # URLs in JSX attributes like href. This is often discouraged because it can lead to confusing or broken behavior in the app.
+    "react/jsx-no-script-url": "error",
+
+    //Discourages passing children via a prop (i.e., children should be passed directly in JSX rather than through props). React's children prop is already built-in, so there's no need to pass it explicitl
+    "react/no-children-prop": "error",
+
+    //Prevents the use of dangerouslySetInnerHTML. This is a security concern as it can expose your app to cross-site scripting (XSS) attacks if used improperly.
+    "react/no-danger": "error",
+
+    //Prevents combining dangerouslySetInnerHTML with children. This helps ensure that you don't mix raw HTML with React elements, reducing the risk of XSS vulnerabilities.
+    "react/no-danger-with-children": "error",
+
+    //Prevents declaring components inside other components (nested components) unless they are passed as props. This rule discourages the use of nested components that could potentially be re-rendered unnecessarily.
+    "react/no-unstable-nested-components": ["error", { "allowAsProps": true }],
+
+    //Enforces using the shorthand syntax for React.Fragment (<>...</>) rather than the longer <React.Fragment>...</React.Fragment>.
+    "react/jsx-fragments": "error",
+
+    //Requires destructuring of props or state in the function signature of the component or function. It promotes a clean and concise way of extracting values from objects.
+    "react/destructuring-assignment": [
+      "error",
+      "always",
+      { "destructureInSignature": "always" }
+    ],
+
+    //Ensures that JSX expressions don’t inadvertently cause a component to re-render unnecessarily. For example, using conditionals or function calls inside JSX should be done carefully to avoid performance issues.
+    "react/jsx-no-leaked-render": ["error", { "validStrategies": ["ternary"] }],
+
+    //Restricts the depth of nested JSX elements to a maximum of 5 levels. Deeply nested components can be hard to maintain and lead to complex, unreadable code
+    "react/jsx-max-depth": ["error", { "max": 5 }],
+
+    //Enforces the use of arrow functions for defining named function components. This helps to make the component declaration more concise and uniform.
+    "react/function-component-definition": [
+      "error",
+      { "namedComponents": "arrow-function" }
+    ],
+
+    //Ensures all elements in a list or a fragment have a unique key prop to optimize rendering. It checks for:
+    "react/jsx-key": [
+      "error",
+      {
+        "checkFragmentShorthand": true,
+        "checkKeyMustBeforeSpread": true,
+        "warnOnDuplicates": true
+      }
+    ],
+
+    //Warns against using unnecessary fragments, i.e., fragments that are used without serving any purpose, especially when there's only one child.
+    "react/jsx-no-useless-fragment": "error",
+
+    //Warns about unnecessary or missing curly braces in JSX for expressions. For instance, it's better to use curly braces for JavaScrip
+    "react/jsx-curly-brace-presence": "error",
+
+    //Warns when there are typos in React-specific properties (such as className, onClick, etc.), helping prevent mistakes that could break functionality or introduce bugs.
+    "react/no-typos": "error",
+
+    //Encourages the use of self-closing tags for components without children (e.g., <MyComponent /> instead of <MyComponent></MyComponent>). This can help keep the JSX cleaner.
+    "react/self-closing-comp": "error",
+
+    //Disables the rule that ensures React is in scope when using JSX. This is useful for projects where React is globally available (e.g., via react-scripts in Create React App).
+    "react/react-in-jsx-scope": "off",
+
+    //Disables the rule that forces one JSX expression per line. This is useful for keeping JSX more flexible and readable when dealing with multiple expressions in a single element.
+    "react/jsx-one-expression-per-line": "off",
+
+    //Disables the requirement for prop-types. If you're using TypeScript, this is often redundant since TypeScript provides static type checking, but if you're using plain JavaScript, this helps with runtime validation of props.
+    "react/prop-types": "off",
+
+    //Rule: This rule disallows duplicate props in JSX.
+    "react/jsx-no-duplicate-props": "error",
+
+    //Rule: Limits the number of props per line for better readability.
+    "react/jsx-max-props-per-line": ["error", { "maximum": 8 }],
+
+    "react/jsx-closing-bracket-location": ["error", "line-aligned"],
+
+    //rule: Avoid using array indices as key props, as they can lead to issues with component re-rendering.
+    "react/no-array-index-key": "error",
+
+    //Warns about the usage of unsafe lifecycle methods like componentWillMount, componentWillReceiveProps, and componentWillUpdate.
+    "react/no-unsafe": "warn",
+
+    //Rule: Disallows placing comments inside JSX text nodes.
+    "react/jsx-no-comment-textnodes": "error",
+
+    //Rule: Ensures variables used inside JSX are marked as "used" to avoid accidental removal by the linter.
+    "react/jsx-uses-vars": "error",
 
     "lines-around-comment": [
       "error",
@@ -75,9 +169,9 @@
       }
     ],
     "no-console": [
-      "error", 
-      { 
-        "allow": ["warn", "error"] 
+      "error",
+      {
+        "allow": ["warn", "error"]
       }
     ]
   },

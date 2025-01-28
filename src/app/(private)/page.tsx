@@ -20,7 +20,7 @@ const Dashboard = ( ) => {
   return (
     <div>
       {JSON.stringify(data)}
-      <Button color="primary" variant="contained" onClick={handleLogout}>
+      <Button color="primary" onClick={handleLogout} variant="contained">
         logout
       </Button>
       <CompA lol="dsdsd" />

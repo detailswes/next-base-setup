@@ -10,7 +10,7 @@ const SignIn = () => {
   const dispatch = useDispatch();
 
   return (
-    <>
+
       <Button
         onClick={() => {
           cookie.set("token", "resdsdssd");
@@ -20,7 +20,7 @@ const SignIn = () => {
       >
         login
       </Button>
-    </>
+    
   );
 };
 
